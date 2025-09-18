@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso VIP - Conteúdo Exclusivo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --red: #d9263f;
+            --gold: #d4af37;
+            --dark-red: #a51c30;
+            --dark-gold: #b8941f;
+            --gray: #1a1a1a;
+            --light-gray: #2a2a2a;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 18px 36px;
+            background: linear-gradient(135deg, var(--red) 0%, var(--dark-red) 100%);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 20px rgba(217, 38, 63, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20px;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(30deg);
+            transition: all 0.6s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(217, 38, 63, 0.6);
+        }
+        
+        .btn:hover::after {
+            left: 120%;
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-gold:hover {
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)), url('https://images.unsplash.com/photo-1595867818082-083862f3aaf4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 40px 20px;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: var(--white);
+            animation: fadeIn 1.2s ease;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* About Section */
+        #sobre {
+            background-color: var(--gray);
+            position: relative;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--gold);
+            text-align: center;
+        }
+        
+        .about-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .feature {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-gray);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .feature h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+        
+        /* Benefits Section */
+        #beneficios {
+            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1519162584292-56dfc9eb5db4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--red);
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+        
+        /* Plans Section */
+        #planos {
+            background-color: var(--gray);
+        }
+        
+        .plans-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--light-gray);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plans-container::before {
+            content: 'VIP';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            font-size: 8rem;
+            font-weight: bold;
+            color: rgba(212, 175, 55, 0.1);
+            transform: rotate(20deg);
+            z-index: 0;
+        }
+        
+        .plan-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            text-align: center;
+        }
+        
+        .price {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin: 20px 0;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .price span {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+        
+        .plan-features {
+            margin: 30px 0;
+        }
+        
+        .plan-features li {
+            margin-bottom: 15px;
+            list-style-type: none;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .plan-features li::before {
+            content: '✓';
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Testimonials Section */
+        #depoimentos {
+            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+        }
+        
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: """;
+            font-size: 4rem;
+            color: var(--red);
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            opacity: 0.3;
+            font-family: serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            background: linear-gradient(135deg, var(--red) 0%, var(--dark-red) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            padding: 60px 0 30px;
+            text-align: center;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .footer-cta {
+            margin-bottom: 40px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            color: var(--white);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--red);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .plans-container {
+                padding: 30px 20px;
+            }
+            
+            .price {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>🔥 Descubra Meu Mundo Secreto 🔥</h1>
+                <p>Conteúdos exclusivos, disponíveis apenas para membros VIP.</p>
+                <a href="https://t.me/seubot" class="btn">Quero Acesso Agora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">Sobre o Conteúdo</h2>
+                <p class="about-description">Entre em um universo de experiências únicas e conteúdos exclusivos criados especialmente para você. Um espaço privado onde a sensualidade e a elegância se encontram.</p>
+                
+                <div class="features">
+                    <div class="feature fade-in">
+                        <div class="feature-icon">📸</div>
+                        <h3>Fotos e Vídeos Inéditos</h3>
+                        <p>Conteúdo exclusivo que você não encontrará em nenhum outro lugar</p>
+                    </div>
+                    <div class="feature fade-in">
+                        <div class="feature-icon">🔥</div>
+                        <h3>Atualizações Semanais</h3>
+                        <p>Novos conteúdos adicionados regularmente para manter sua experiência sempre fresca</p>
+                    </div>
+                    <div class="feature fade-in">
+                        <div class="feature-icon">👑</div>
+                        <h3>Acesso Direto ao VIP</h3>
+                        <p>Comunidade exclusiva onde você terá acesso privilegiado</p>
+                    </div>
+                </div>
+                
+                <a href="https://t.me/seubot" class="btn">Liberar Meu VIP</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="beneficios">
+        <div class="container">
+            <h2 class="section-title">Vantagens Exclusivas</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">💎</div>
+                    <h3>Acesso 24/7</h3>
+                    <p>Conteúdo disponível a qualquer hora, em qualquer lugar</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🔥</div>
+                    <h3>Conteúdo 100% Exclusivo</h3>
+                    <p>Material criado especialmente para membros VIP</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>Sem Censura</h3>
+                    <p>Conteúdo autêntico e sem restrições</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">📲</div>
+                    <h3>Entrega Prática</h3>
+                    <p>Receba tudo diretamente pelo Telegram de forma rápida e discreta</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="https://t.me/seubot" class="btn">Garantir Meu Acesso</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="planos">
+        <div class="container">
+            <h2 class="section-title">Acesso VIP</h2>
+            <div class="plans-container fade-in">
+                <h3 class="plan-title">Acesso VIP por 1 Ano</h3>
+                <div class="price"><span>R$</span>129,99</div>
+                <p class="text-center">Acesso completo a todos os conteúdos exclusivos</p>
+                
+                <ul class="plan-features">
+                    <li>Acesso imediato após a compra</li>
+                    <li>Conteúdo exclusivo 24/7</li>
+                    <li>Atualizações semanais</li>
+                    <li>Suporte prioritário</li>
+                    <li>Garantia de satisfação de 7 dias</li>
+                </ul>
+                
+                <div class="text-center">
+                    <a href="https://t.me/seubot" class="btn btn-gold">Comprar Agora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="depoimentos">
+        <div class="container">
+            <h2 class="section-title">O Que Nossos Membros Dizem</h2>
+            <div class="testimonials">
+                <div class="testimonial fade-in">
+                    <div class="testimonial-text">
+                        Vale cada centavo! Conteúdo top e atualizado sempre. A entrega pelo Telegram é super prática e discreta.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">J</div>
+                        <div>
+                            <strong>João Pedro</strong>
+                            <p>Membro VIP</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial fade-in">
+                    <div class="testimonial-text">
+                        A experiência mais exclusiva que já tive. Conteúdo de alta qualidade e totalmente diferente do que encontro em outros lugares.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div>
+                            <strong>Luis Cardoso</strong>
+                            <p>Membro VIP</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial fade-in">
+                    <div class="testimonial-text">
+                        Acesso imediato e conteúdo surpreendente. A plataforma do Telegram torna tudo muito fácil e discreto.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div>
+                            <strong>Matheus Augusto</strong>
+                            <p>Membro VIP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-cta">
+                <h3>Pronto para uma experiência exclusiva?</h3>
+                <a href="https://t.me/lolasexygirl_bot" class="btn">Entrar no VIP Agora</a>
+            </div>
+            
+            
+            <p class="copyright">© 2023 Conteúdo VIP. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animação de scroll suave para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animação de aparecimento ao scroll
+        function checkFade() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+    </script>
+</body>
+</html>
